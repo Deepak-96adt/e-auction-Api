@@ -22,7 +22,7 @@ export var save = async (req, res, next) => {
         res.status(201).json({ "status": "SubCategory added successfully....." });
     }
     catch (error) {
-        console.log(error)
+        console.error(error)
         res.status(500).json({ "status": error.message });
     }
 }
