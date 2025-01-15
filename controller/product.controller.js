@@ -12,8 +12,8 @@ export var save = async(req,res,next)=>{
     var _id = (size==0)?1:productList[size-1]._id+1; 
     var picon = req.files.picon;
     var piconnm = Date.now()+"-"+rs.generate(10)+"-"+picon.name;
-    var uploadPath = path.join(__dirname,"../../UI/public/img/upload/product-img",piconnm);
-    var productDetails={...req.body,"piconnm":piconnm,"info":Date(),"_id":_id}
+    var uploadPath = path.join(__dirname,"../uploads/product-img",piconnm);
+    var productDetails={...req.body,"piconnm":piconnm,"created_at":Date(),"_id":_id}
     
     try{
         await productSchemaModel.create(productDetails);

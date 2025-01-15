@@ -46,7 +46,7 @@ const userSchema = mongoose.Schema({
     },
     role:String,
     status:Number,
-    info:String
+    created_at:String
 });
 
 userSchema.plugin(uniqueValidator);

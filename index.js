@@ -1,6 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import url from 'url';
+import path from 'path';
 import fileUpload from "express-fileupload";
 
 var app=express();
@@ -31,6 +33,9 @@ app.use("/subcategory",subcategoryRoute);
 app.use("/product",productRoute);
 app.use("/bid",bidRoute);
 app.post("/payment",Gateway);
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.listen(3001);
 console.log("server connected successfully on port http://localhost:3001");

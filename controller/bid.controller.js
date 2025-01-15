@@ -7,7 +7,7 @@ export var save = async (req, res, next) => {
     var size = bidList.length;
     var _id = (size == 0) ? 1 : bidList[size - 1]._id + 1;
 
-    var bidDetails = { ...req.body,"info":Date(),"_id": _id };
+    var bidDetails = { ...req.body,"created_at":Date(),"_id": _id };
     try {
         await BidSchemaModel.create(bidDetails);
         res.status(201).json({ "status": "bid added successfully....." });

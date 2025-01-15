@@ -1,8 +1,8 @@
 import "../model/connection.js";
 import CategorySchemaModel from "../model/category.model.js";
+import rs from "randomstring";
 import url from 'url';
 import path from 'path';
-import rs from "randomstring";
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
@@ -10,12 +10,10 @@ export var save = async (req, res, next) => {
     var categoryList = await CategorySchemaModel.find();
     var size = categoryList.length;
     var _id = (size == 0) ? 1 : categoryList[size - 1]._id + 1;
-
     var caticon = req.files.caticon;
-    var caticonnm = Date.now()+"-"+rs.generate(10)+"-"+caticon.name;
-    var uploadPath = path.join(__dirname,"../../UI/public/img/upload/category-icon",caticonnm);
-    
-    var categoryDetails = { ...req.body,"caticonnm":caticonnm, "_id": _id };
+    var caticonnm = Date.now() + "-" + rs.generate(10) + "-" +caticon.name;
+    var uploadPath = path.join(__dirname,"../uploads/category-icon",caticonnm);
+    var categoryDetails = { ...req.body, "caticonnm": caticonnm, "_id": _id };
     try {
         await CategorySchemaModel.create(categoryDetails);
         caticon.mv(uploadPath);

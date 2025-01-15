@@ -9,7 +9,7 @@ export var save = async(req,res,next)=>{
     var userList = await userSchemaModel.find();
     var size = userList.length;
     var _id = (size==0)?1:userList[size-1]._id+1;
-    var userDetails = {...req.body,"_id":_id,"status":0,"role":"user","info":Date()};
+    var userDetails = {...req.body,"_id":_id,"status":0,"role":"user","created_at":Date()};
 
     try{
         var user = await userSchemaModel.create(userDetails);

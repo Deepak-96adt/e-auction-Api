@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const productSchema = mongoose.Schema({
     _id:Number,
-    info:String,
+    created_at:String,
     title:{
         type:String,
         required:[true,"title is required"],

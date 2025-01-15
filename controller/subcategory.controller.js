@@ -13,7 +13,7 @@ export var save = async (req, res, next) => {
 
     var subcaticon = req.files.subcaticon;
     var subcaticonnm = Date.now()+"-"+rs.generate(10)+"-"+subcaticon.name;
-    var uploadPath = path.join(__dirname,"../../UI/public/img/upload/subcategory-icon",subcaticonnm);
+    var uploadPath = path.join(__dirname,"../uploads/subcategory-icon",subcaticonnm);
     
     var subCategoryDetails = { ...req.body,"subcaticonnm":subcaticonnm, "_id": _id };
     try {
